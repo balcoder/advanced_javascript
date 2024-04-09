@@ -599,6 +599,201 @@ function isEven(val){
     return val % 2 === 0;
 }
 
-var arr = [1,2,3,4,5,6,7,8];
+// var arr = [1,2,3,4,5,6,7,8];
 
-console.log(partition(arr, isEven)); // [[2,4,6,8], [1,3,5,7]];
+// console.log(partition(arr, isEven)); // [[2,4,6,8], [1,3,5,7]];
+
+// Using Clousers in functions
+
+/* 
+Write a function called specialMultiply which accepts two parameters. If the function is passed both
+parameters, it should return the product of the two. If the function is only passed one parameter -
+it should return a function which can later be passed another parameter to return the product. You
+will have to use closure and arguments to solve this.
+
+Examples: 
+
+    specialMultiply(3,4); // 12
+    specialMultiply(3)(4); // 12
+    specialMultiply(3); // function(){}....
+*/
+
+function specialMultiply(num1, num2) {
+    if(arguments.length > 1) {
+        return num1 * num2;
+    }   
+    return function(num) {
+        return num1 * num;
+    }
+}
+
+// console.log(specialMultiply(3,4));
+// console.log(specialMultiply(3)(5));
+
+/* 
+Write a function called guessingGame which takes in one parameter amount. The
+function should return another function that takes in a parameter called guess.
+In the outer function, you should create a variable called answer which is the
+result of a random number between 0 and 10 as well as a variable called guesses
+which should be set to 0.
+
+In the inner function, if the guess passed in is the same as the random number
+(defined in the outer function) - you should return the string "You got it!".
+If the guess is too high return "Your guess is too high!" and if it is too low,
+return "Your guess is too low!". You should stop the user from guessing if the
+amount of guesses they have made is greater than the initial amount passed to the
+outer function.
+
+You will have to make use of closure to solve this problem.
+
+Examples (yours might not be like this, since the answer is random every time):
+
+    var game = guessingGame(5)
+    game(1) // "You're too low!"
+    game(8) // "You're too high!"
+    game(5) // "You're too low!"
+    game(7) // "You got it!"
+    game(1) // "You are all done playing!"
+
+    var game2 = guessingGame(3)
+    game2(5) // "You're too low!"
+    game2(3) // "You're too low!"
+    game2(1) // "No more guesses the answer was 0"
+    game2(1) // "You are all done playing!"
+*/
+function guessingGame(numOfGuesses) {
+    let guesses = 0;
+    let rndNum = Math.floor((Math.random() * 10) + 1);
+    return function game(guess) {
+        if (guesses === numOfGuesses) {
+            return "You're all done playing";
+        }
+        guesses++;        
+        if(guess < rndNum) {
+            return "You're too low";
+        } else if(guess > rndNum) {
+            return "You're too high";
+        } else {
+            guesses = numOfGuesses;
+            return "You got it. Well done!"
+        }        
+    }
+}
+
+// The keyword "this" and call, apply and bind
+
+
+// Given
+// var divs = document.getElementsByTagName('div');
+// How do we find the divs that have the text "Price"?
+// Using filter would be nice but the divs object is not an array, it's an array
+// like object made of dom nodes
+// We will have to covert it into an array by using slice but with a differnece.
+
+// var divsArray = [].slice.call(divs);
+
+
+/*
+Write a function called arrayFrom which converts an array-like-object into an
+array.
+
+Examples:
+    var divs = document.getElementsByTagName('divs');
+    divs.reduce // undefined
+    var converted = arrayFrom(divs);
+    converted.reduce // function(){}....
+*/
+
+function arrayFrom(arrLikeObj) {
+    return [].slice.apply(arrLikeObj);
+}
+
+/* 
+// Write a function called sumEvenArguments which takes all of the arguments
+passed to a function and returns the sum of the even ones.
+
+Examples:
+    sumEvenArguments(1,2,3,4) // 6
+    sumEvenArguments(1,2,6) // 8
+    sumEvenArguments(1,2) // 2
+*/
+// arguments is an arraylike object
+function sumEvenArguments() {
+    let newArr = [].slice.apply(arguments);       
+    return newArr.reduce((acc, next) => {
+        if(next % 2 === 0) {
+            return acc + next;
+        }
+        return acc;
+    },0)
+}
+
+// console.log(sumEvenArguments(1,2,3,4));
+
+/* 
+Write a function called invokeMax which accepts a function and a maximum amount.
+invokeMax should return a function that when called increments a counter. If the
+counter is greater than the maximum amount, the inner function should return
+"Maxed Out"
+
+Examples:
+
+    function add(a,b){
+        return a+b
+    }
+
+    var addOnlyThreeTimes = invokeMax(add,3);
+    addOnlyThreeTimes(1,2) // 3
+    addOnlyThreeTimes(2,2) // 4
+    addOnlyThreeTimes(1,2) // 3
+    addOnlyThreeTimes(1,2) // "Maxed Out!"
+
+*/
+
+function invokeMax(fn, counter) {
+    let max = 0;
+    return function() {
+        if(max >= counter) return "Maxed out!";
+        max++;
+        return fn.apply(this, arguments);
+    }
+}
+
+/* 
+Write a function called once which accepts two parameters, a function and a value
+for the keyword 'this'. Once should return a new function that can only be
+invoked once, with the value of the keyword this in the function set to be the
+second parameter.
+
+Examples:
+
+    function add(a,b){
+        return a+b
+    }
+
+    var addOnce = once(add, this);
+    addOnce(2,2) // 4
+    addOnce(2,2) // undefined
+    addOnce(2,2) // undefined
+    
+    function doMath(a,b,c){
+        return this.firstName + " adds " + (a+b+c)
+    }
+    
+    var instructor = {firstName: "Elie"}
+    var doMathOnce = once(doMath, instructor);
+    doMathOnce(1,2,3) // "Elie adds 6"
+    doMathOnce(1,2,3) // undefined  
+
+*/
+
+function once(fn, key) {
+    let called = false;
+    return function(){
+        if(!called) { // check for called = true
+            called = true;
+            return fn.apply(key, arguments);
+        }
+    };
+}
+
