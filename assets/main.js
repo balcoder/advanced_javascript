@@ -921,11 +921,11 @@ function personSubtract(a,b,c){
     return this.firstName + " subtracts " + (a-b-c);
 }
 
-var person = {
-    firstName: 'Elie'
-}
+// var person = {
+//     firstName: 'Elie'
+// }
 
-var flipFn = flip(personSubtract, person);
+// var flipFn = flip(personSubtract, person);
 // console.log(flipFn(3,2,1));
 
 /* 
@@ -976,9 +976,9 @@ function firstNameFavoriteColor(favoriteColor){
     return this.firstName + "'s favorite color is " + favoriteColor
 }
 
-var person = {
-    firstName: 'Elie'
-}
+// var person = {
+//     firstName: 'Elie'
+// }
 
 // var bindFn = bind(firstNameFavoriteColor, person);
 // console.log(bindFn('green'));
@@ -1075,3 +1075,446 @@ function reverseArray() {
 	}
 	return arr;
 }
+
+///////////////////////////////////////////////////////////////////////////////
+// ES2015 Classes
+///////////////////////////////////////////////////////////////////////////////
+
+// 1 - Create a class for a Person. Each person should have a firstName,
+// lastName, favoriteColor, favoriteNumber.
+
+/* 2 - Add an instance method called multiplyFavoriteNumber that accepts one
+parameter and returns the product of the parameter multiplied with the
+favoriteNumber property on a person object.
+    
+Examples:    
+    var person = new Person("Elie", "Schoppik", "purple", 34)
+    person.multiplyFavoriteNumber(10) // 340
+
+*/
+
+// class Person {
+//     constructor (firstName,lastName, favoriteColor, favoriteNumber) {
+//         this.firstName = firstName;
+//         this.lastName = lastName;
+//         this.favoriteColor = favoriteColor;
+//         this.favoriteNumber = favoriteNumber;
+//     }
+//     multiplyFavoriteNumber(num) {
+//         return this.favoriteNumber * num;
+//     }
+// }
+
+// const elie = new Person("Elie", "Schoppik", "purple", 34)
+// console.log(elie.multiplyFavoriteNumber(10));
+
+// 1 - Create a class for for a Vehicle. Each vehicle should have a make, model
+//and year property.
+
+// 2 - Add an instance method called start which returns the string "VROOM!"
+
+// 3 - Add an instance method called toString which returns the string "The make
+//, model, and year are" concatenated with the make, model and year property
+
+/* Examples 
+    var vehicle = new Vehicle("Tractor", "John Deere", 1999)
+    vehicle.toString() // 'The make, model, and year are Tractor John Deere 1999'
+*/
+
+class Vehicle {
+    constructor(make, model, year) {
+        this.make = make;
+        this.model = model;
+        this.year = year;
+    }
+
+    start() {
+        return "VROOM!";
+    }
+
+    toString() {
+        return `The make, model, and year are ${this.make}, ${this.model} and ${this.year}`
+    }
+}
+
+// var vehicle = new Vehicle("Tractor", "John Deere", 1999)
+// console.log(vehicle.toString())
+
+// 4 - Create a class for a Car. Each object created from the Car function
+// should also have a make, model, and year and a property called numWheels
+// which should be 4. The Car prototype should inherit all of the methods from
+// the Vehicle prototype
+
+class Car extends Vehicle {
+    constructor() {
+        // super(make, model, year);
+        super(...arguments);
+        this.numWheels = 4;
+    }
+}
+
+// 5 - Create a class for a Motorcycle. Each object created from the Motorcycle
+// function should also have a make, model, and year and a property called
+// numWheels which should be 2. The Motorcycle prototype should inherit all of the
+// methods from the Vehicle prototype
+
+class Motorcycle extends Vehicle {
+    constructor() {
+        super(...arguments);
+        this.numWheesl = 2;
+    }
+}
+
+
+
+
+/*
+   In your constructor method, you should assign two properties for each object
+   created from the MessageBoard class. The first should be a property called
+   messages which is an empty Map, and the second is a property called id which
+   has a value of 1.
+   
+   var m = new MessageBoard
+   
+   m.hasOwnProperty('messages') // true
+   m.messages.constructor // function Map() { [native code] }
+   m.hasOwnProperty('id') // true
+   m.id // 1
+*/
+/*
+   
+   Add a method called addMessage which accepts a string. The function should
+   add a key and value to the messages map with a key of whatever the value of
+   this.id is and a value of whatever the string is that is passed to the
+   function. The function should return the object created from the class so
+   that the method can be chained. (HINT - to implement the last part, make
+   sure to return this).
+   
+   var m = new MessageBoard
+   m.addMessage('hello');
+   m.messages.size // 1
+   m.addMessage('awesome!') // m
+   m.addMessage('awesome!').addMessage('nice!').addMessage('cool!')
+   */
+/*
+    Add a method called findMessageById which accepts a number and returns the
+    message in the messages map with the same key as the number passed to the
+    function. If the key is not found in the messages map, the function should
+    return undefined.
+    
+    
+    var m = new MessageBoard
+    m.addMessage('hello!')
+    m.addMessage('hi!')
+    m.addMessage('whats up?')
+    m.findMessageById(1) // 'hello!'
+    m.findMessageById(2) // 'hi!'
+    m.findMessageById(3) // 'whats up?'
+    m.findMessageById(4) // undefined
+    m.findMessageById() // undefined
+    */
+/*
+    Add a method called findMessageByValue which accepts a string and returns
+    the message in the messages map with the same value as the string passed to
+    function. If the value is not found in the messages map, the function should
+    return undefined.
+    
+    var m = new MessageBoard
+    m.addMessage('hello!')
+    m.addMessage('hi!')
+    m.addMessage('whats up?')
+    m.findMessageByValue('hello!') // 'hello!'
+    m.findMessageByValue('hi!') // 'hi!'
+    m.findMessageByValue('whats up?') // 'whats up?'
+    m.findMessageByValue('nothing here') // undefined
+    m.findMessageByValue() // undefined
+    */
+
+ /*
+    Add a method called removeMessage which accepts a number and removes a
+    message in the messages map with a key of the number passed to the function.
+    
+    var m = new MessageBoard
+    m.addMessage('hello!')
+    m.addMessage('hi!')
+    m.addMessage('whats up?')
+    m.removeMessage(1)
+    m.removeMessage(2)
+    m.messages.size // 1
+    m.removeMessage() // m
+    */
+
+/*
+    Add a method called numberOfMessages which returns the number of keys in the
+    messages map
+    
+    var m = new MessageBoard
+    m.addMessage('hello!')
+    m.addMessage('hi!')
+    m.addMessage('whats up?')
+    m.numberOfMessages() // 3
+    */
+/*
+    Add a method called messagesToArray which returns an array of all of the
+    values in the messages map
+    
+    var m = new MessageBoard
+    m.addMessage('hello!')
+    m.addMessage('hi!')
+    m.addMessage('whats up?')
+    m.messagesToArray() // ['hello!', 'hi!', 'whats up?'])
+    */
+
+    class MessageBoard {
+        constructor() {
+            this.message = new Map();
+            this.id = 1;
+        }
+        addMessage(newMessage) {
+            this.message.set(this.id, newMessage);
+            this.id++;
+            return this;
+        }
+        findMessageById(id) {
+            return this.message.get(id);
+        }
+        fintMessageByValue(val) {
+            const iterator1 = this.message[Symbol.iterator]();
+            for (let item of iterator1) {
+                if (val === item[1]) {
+                    return item[1];
+                }
+            }
+            return undefined;
+        }
+        removeMessage(num) {
+            return this.message.delete(num);
+        }
+        numberOfMessages() {
+            return this.message.size;
+        }
+        messagesToArray() {
+            // return Array.from(this.message.values());
+            const iterator2 = this.message.values();
+            let arr = []
+            for(let item of iterator2) {
+                arr.push(item);
+            }
+            return arr;
+        }
+    }
+    
+// const m = new MessageBoard;
+// m.addMessage('hello!');
+// m.addMessage('hi!');
+// m.addMessage('whats up?');
+
+// console.log(m.fintMessageByValue('hello!'));
+// console.log(m.messagesToArray());
+
+/*
+Write a function called uniqueValues which accepts an array and returns the
+number of unique values in the array
+
+uniqueValues([1,1,2,2,2,3,3,3,3,4,4,4,5,5,6]) // 6
+*/
+
+function uniqueValues(arr) {
+    let values = new Set(arr);
+    return values.size;
+}
+
+// console.log(uniqueValues([1,1,2,2,2,3,3,3,3,4,4,4,5,5,6]));
+
+/*
+
+Write a function called hasDuplicates which accepts an array and returns true if
+there are duplicate values in the array, otherwise it should return false.
+
+hasDuplicates([1,1,2,2,2,3,3,3,3,4,4,4,5,5,6]) // true
+hasDuplicates([1,2,3,4,5,6]) // false
+hasDuplicates([]) // false
+*/
+
+function hasDuplicates(arr) {
+    // return new Set(arr).size !== arr.length
+    let uniqueLength = new Set(arr).size;
+    if (uniqueLength === arr.length) {
+        return false;        
+    }
+    return true;
+}
+
+// console.log(hasDuplicates([1,1,2,2,2,3,3,3,3,4,4,4,5,5,6]));
+// console.log(hasDuplicates([1,2,3,4,5,6]));
+
+/*
+
+Write a function called countPairs which accepts an array of numbers and a
+number. The function should return the number of unique pairs (two numbers) that
+sum up to the number passed to the function.
+
+countPairs([8,2,6,4,10,0],10) // 3
+countPairs([8,2],10) // 1
+countPairs([1,2],10) // 0
+countPairs([1,2,3,4,5],10) // 0
+countPairs([],10) // 0
+countPairs([5,4,-10,6,-20,16],-4) // 2
+countPairs([0,-4],-4) // 1
+*/
+
+function countPairs(arr, num) {
+    // use a set to see if the other pair exists    
+    const dupSet = new Set(arr);
+    let count = 0;
+    for(let val of arr) {
+        dupSet.delete(val);
+        if(dupSet.has(num - val)) {
+            count++;
+        }
+    }
+    return count;
+
+}
+
+// countPairs([8,2,6,4,10,0],10);
+/*
+1. Write a function called getMostFollowers, which accepts a variable number of
+arguments. You should then make an AJAX call to the Github User API
+(https://developer.github.com/v3/users/#get-a-single-user) to get the name and
+number of followers of each argument. The function should return a promise,
+which when resolved, returns a string which displays the username who has the
+most followers.
+*/
+
+function getMostFollowers(...names) {
+    let baseUrl = "https://api.github.com/users/";
+    let promises = names.map(name => fetch(baseUrl + name).then(res => res.json()))    
+    Promise.all(promises).then(data => {        
+        let mostFollowers = {name: "Jonh Doe", followers: 0};        
+        data.forEach(val => {
+            console.log(val.name, val.followers);                       
+            if(val.followers > mostFollowers.followers) {
+                mostFollowers.name = val.name;
+                mostFollowers.followers = val.followers;
+            }
+        })        
+        console.log(`The person with the most followers is ${mostFollowers.name} with ${mostFollowers.followers} followers`)
+    })
+    .catch(error => console.error('Error fetching data:', error)); 
+
+}
+
+// getMostFollowers('elie','tigarcia','colt');
+
+/* Write a function called getCountryData, which accepts a name. You should
+then make an AJAX call to the restcountries API
+(https://restcountries.com/v3.1/name/{name}?fullText=true ) to search for the 
+name passed to the function. Your function should
+return a promise that when resolved will console.log the name, poplulation,
+currency and region of the country.
+*/
+function getCountryData(name) {
+    let str = "";
+    return new Promise((res, rej) => {
+        let data = fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`)
+                    .then(info => info.json());
+        if(data) {
+            res(data);
+        } else {
+            rej("Error fetching data");
+        }
+    })
+    .then(res => {
+        str += `${res[0].name.common} has a population of ${res[0].population}
+        and is in the continent of ${res[0].continents[0]}`;
+        return str
+    })
+    .then(finalString => finalString);
+}
+
+// getCountryData("Ireland")
+// .then(data => console.log(data))
+// .catch(error => console.log(error));
+
+
+///////////////////////////////////////////////////////////////////////////////
+// Async Functions
+///////////////////////////////////////////////////////////////////////////////
+
+// Write a function called hasMostFollowers, which accepts a variable number of
+// arguments. You should then make an AJAX call to the Github User API
+// (https://developer.github.com/v3/users/#get-a-single-user) to get the name
+// and number of followers of each argument. The function should return a string
+// which displays the username who has the most followers. 
+
+// Hint - Try to use Promise.all to solve this and remember that the jQuery AJAX
+// methods ($.getJSON, $.ajax, etc.) return a promise.
+
+// hasMostFollowers('elie','tigarcia','colt').then(function(data){
+//     console.log(data)
+// });
+ 
+// "Colt has the most followers with 424" 
+
+ async function hasMostFollowers(...args) {
+    // Create an array of promises using map
+    const promiseInfo = args.map(name => {
+        const url = `https://api.github.com/users/${name}`; 
+        return fetch(url)
+            .then(res => {
+                if(!res.ok) {
+                throw new Error(`HTTP error! Status: ${res.status}`);
+                }
+                return res.json();
+            })
+            .catch(error => console.error('Fetching error:', error.message));
+    })
+    try {
+        // Wait for all promises to resolve
+        const users = await Promise.all(promiseInfo);
+        let followers = 0;
+        let mostFollowers = "";
+        // Log each user information
+        users.forEach(user => {
+            if (user) {
+                if(user.following > followers) {
+                    followers = user.followers;
+                    mostFollowers = user.name;
+                }
+                // console.log(user.name);
+            }
+        });
+        console.log(`${mostFollowers} has the most followers at ${followers}`);
+    } catch (error) {
+        console.error('Error in Promise.all:', error);
+    }
+    // const nameList = await Promise.all(promiseInfo);
+    // nameList.forEach(val => console.log(val.name))
+}
+
+// hasMostFollowers('balcoder', 'colt', 'elie');
+
+async function starWarsString(num) {
+    const baseUrl = "https://swapi.dev/api/films/";
+    const movieInfo = fetch(baseUrl + num)
+                        .then(res => {
+                            if(!res.ok) {
+                                throw new Error(`HTTP error! Status: ${res.status}`);
+                            }
+                            return res.json();
+                        })
+                        .catch(error => console.error('Fetching error:', error.message));
+    try {
+        let startTime = performance.now();
+        const movie = await movieInfo;        
+        let endTime = performance.now();
+        console.log(movie.title);        
+        console.log(`Get movie data took ${endTime - startTime} milliseconds`)
+        
+    } catch (error) {
+        console.error('Error in fetch:', error); 
+    }
+}
+
+starWarsString(2);
