@@ -992,7 +992,7 @@ function firstNameFavoriteColor(favoriteColor) {
 // console.log(bindFn2('green'));
 
 /////////////////////////////////////////////////////////////////////////////////
-//New Keyword
+//New Keyword and Prototypes
 /////////////////////////////////////////////////////////////////////////////////
 
 function Dog(name, age) {
@@ -1065,17 +1065,42 @@ Person.prototype.addToFamily = function (member) {
   return this.family.length;
 };
 
-var elie = new Person("Elie", "Schoppik", "purple", 34);
-var frank = new Person("Frank", "Schoppik", "blue", 12);
-elie.addToFamily(frank);
-console.log(elie.family.length);
-console.log("Add same family member again");
-elie.addToFamily(frank);
-console.log(elie.family.length);
-console.log("Add new family member");
-var anne = new Person("Anne", "Schoppik", "pink", 10);
-elie.addToFamily(anne);
-console.log(elie.family.length);
+// var elie = new Person("Elie", "Schoppik", "purple", 34);
+// var frank = new Person("Frank", "Schoppik", "blue", 12);
+// elie.addToFamily(frank);
+// console.log(elie.family.length);
+// console.log("Add same family member again");
+// elie.addToFamily(frank);
+// console.log(elie.family.length);
+// console.log("Add new family member");
+// var anne = new Person("Anne", "Schoppik", "pink", 10);
+// elie.addToFamily(anne);
+// console.log(elie.family.length);
+
+// 1 - Implement your own version of Array.prototype.map. The function should accept a callback
+// and return a new array with the result of the callback for each value in the array.
+
+Array.prototype.map = function (callback) {
+  let newArr = [];
+  for (let i = 0; i < this.length; i++) {
+    newArr.push(callback(this[i], i, this));
+  }
+  return newArr;
+};
+
+/* 2 - Implement a function called reverse that reverses a string and place it on the String.prototype
+
+Examples:
+    "test".reverse() // "tset"
+    "tacocat".reverse() // "tacocat"
+*/
+String.prototype.reverse = function () {
+  var newStr = "";
+  for (var i = this.length - 1; i >= 0; i--) {
+    newStr += this[i];
+  }
+  return newStr;
+};
 /////////////////////////////////////////////////////////////////////////////////
 //Destructoring
 /////////////////////////////////////////////////////////////////////////////////
