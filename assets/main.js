@@ -1,17 +1,17 @@
-const img1 = document.getElementById('foo');
+const img1 = document.getElementById("foo");
 const img = new Image();
 img.src = "./img/hotel-1.jpg";
-img.setAttribute('width', '50%');
-img.setAttribute('height', '50%');
+img.setAttribute("width", "50%");
+img.setAttribute("height", "50%");
 img1.appendChild(img);
 
 // Advanced_javascript code
 
 //define our own forEach function
 function forEach(arr, callback) {
-    for(let i = 0; i < arr.length; i++) {        
-        callback(arr[i], i, arr);
-    }
+  for (let i = 0; i < arr.length; i++) {
+    callback(arr[i], i, arr);
+  }
 }
 
 //sforEach([1,2,3,4], function(val){ console.log(val*2)});
@@ -26,15 +26,14 @@ Examples:
 
 */
 function doubleValues(arr) {
-    let newArr = [];
-    arr.forEach(function(val){
-        newArr.push(val * 2);
-    })
-    return newArr;
+  let newArr = [];
+  arr.forEach(function (val) {
+    newArr.push(val * 2);
+  });
+  return newArr;
 }
 
 //console.log(doubleValues([1,2,3,4]));
-
 
 /*
 Write a function called onlyEvenValues which accepts an array and returns a new
@@ -46,13 +45,13 @@ Examples:
 
 */
 function onlyEvenValues(arr) {
-    let newArr = [];
-    arr.forEach((el) => {
-        if(el % 2 == 0) {
-            newArr.push(el);
-        }
-    })
-    return newArr;
+  let newArr = [];
+  arr.forEach((el) => {
+    if (el % 2 == 0) {
+      newArr.push(el);
+    }
+  });
+  return newArr;
 }
 
 //console.log(onlyEvenValues([1,2,3,4]));
@@ -68,12 +67,12 @@ Examples:
 */
 
 function showFirstAndLast(arr) {
-    let newArr = [];
-    arr.forEach((el)=> {
-        let str = el[0] + el.slice(-1);
-        newArr.push(str)
-    });
-    return newArr;
+  let newArr = [];
+  arr.forEach((el) => {
+    let str = el[0] + el.slice(-1);
+    newArr.push(str);
+  });
+  return newArr;
 }
 
 //console.log(showFirstAndLast(['hi', 'goodbye', 'smile']));
@@ -90,12 +89,12 @@ Examples:
 
 */
 
-function addKeyAndValue(arr, key, value) {    
-    //let newArr = [];
-    arr.forEach(el=> {
-        el[key] = value;
-    })
-    return arr;
+function addKeyAndValue(arr, key, value) {
+  //let newArr = [];
+  arr.forEach((el) => {
+    el[key] = value;
+  });
+  return arr;
 }
 //console.log(addKeyAndValue([{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}], 'title', 'instructor'));
 
@@ -113,19 +112,19 @@ Examples:
 */
 
 function vowelCount(str) {
-    const vowel = ["a", "e", "i", "o", "u"]
-    let lowerCase = str.toLowerCase().split('');    
-    let count = {};
-    lowerCase.forEach(el => {        
-        if(vowel.includes(el)) {
-            if(el in count){
-                count[el] += 1;
-            } else {
-                count[el] = 1;
-            }
-        }
-    })
-    return count;
+  const vowel = ["a", "e", "i", "o", "u"];
+  let lowerCase = str.toLowerCase().split("");
+  let count = {};
+  lowerCase.forEach((el) => {
+    if (vowel.includes(el)) {
+      if (el in count) {
+        count[el] += 1;
+      } else {
+        count[el] = 1;
+      }
+    }
+  });
+  return count;
 }
 
 //console.log(vowelCount('I Am awesome and so are you'));
@@ -133,11 +132,11 @@ function vowelCount(str) {
 // My map function
 
 function myMap(arr, callback) {
-    let newArr = [];
-    for(let i = 0; i < arr.length; i++) {        
-        newArr.push(callback(arr[i], i, arr));
-    }
-    return newArr;
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    newArr.push(callback(arr[i], i, arr));
+  }
+  return newArr;
 }
 
 //console.log(myMap([1,2,3,4], function(el) { return el * 2}));
@@ -150,8 +149,8 @@ Examples:
     doubleValues([1,2,3]) // [2,4,6]
     doubleValues([1,-2,-3]) // [2,-4,-6]
 */
-function doubleValues(arr){
-    return arr.map((el) => el * 2)
+function doubleValues(arr) {
+  return arr.map((el) => el * 2);
 }
 
 //console.log(doubleValues([1,2,3]));
@@ -166,9 +165,9 @@ Examples:
 */
 
 function valTimesIndex(arr) {
-    return arr.map(function(el, index){
-        return el * index;
-    })
+  return arr.map(function (el, index) {
+    return el * index;
+  });
 }
 
 //console.log(valTimesIndex([1,-2,-3]));
@@ -183,9 +182,9 @@ Examples:
 */
 
 function extractKey(arr, key) {
-    return arr.map(el => {
-        return el[key];
-    })
+  return arr.map((el) => {
+    return el[key];
+  });
 }
 
 //console.log( extractKey([{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}], 'name'));
@@ -202,24 +201,23 @@ Examples:
 */
 
 function extractFullName(arr) {
-    return arr.map(el => {
-        return el['first'] + " " + el['last'];
-    })
+  return arr.map((el) => {
+    return el["first"] + " " + el["last"];
+  });
 }
 
 // console.log(extractFullName([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia"},
 // {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele"}]));
 
-
 // My filter function
 function myFilter(arr, callback) {
-    let newArr = [];
-    for(let i = 0; i < arr.length; i++){
-        if(callback(arr[i], i, arr)) {
-            newArr.push(arr[i])
-        }
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (callback(arr[i], i, arr)) {
+      newArr.push(arr[i]);
     }
-    return newArr;
+  }
+  return newArr;
 }
 
 /*
@@ -233,9 +231,9 @@ Examples:
 */
 
 function filterByValue(arr, key) {
-    return arr.filter(el => {
-        return el[key] !== undefined;
-    })
+  return arr.filter((el) => {
+    return el[key] !== undefined;
+  });
 }
 
 // console.log(filterByValue([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia", isCatOwner: true},
@@ -251,9 +249,9 @@ Examples:
 */
 
 function find(arr, value) {
-    return arr.filter(el => {
-        return el === value;
-    })[0];
+  return arr.filter((el) => {
+    return el === value;
+  })[0];
 }
 
 // console.log(find([1,2,3,4,5], 3));
@@ -269,10 +267,10 @@ Examples:
     // {first: 'Tim', last:"Garcia", isCatOwner: true}
 */
 
-function findInObj(arr, key, value){
-    return arr.filter(el => {
-        return el[key] === true;
-    })[0];
+function findInObj(arr, key, value) {
+  return arr.filter((el) => {
+    return el[key] === true;
+  })[0];
 }
 
 // console.log(findInObj([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia", isCatOwner: true},
@@ -289,11 +287,13 @@ Examples:
 */
 
 function removeVowels(str) {
-    let lower = str.toLowerCase().split("");
-    let vowels = ["a","e","i","o","u"];
-    return lower.filter(el => {
-        return vowels.indexOf(el) == -1;
-    }).join('');
+  let lower = str.toLowerCase().split("");
+  let vowels = ["a", "e", "i", "o", "u"];
+  return lower
+    .filter((el) => {
+      return vowels.indexOf(el) == -1;
+    })
+    .join("");
 }
 
 //console.log(removeVowels('Elie'));
@@ -309,33 +309,35 @@ Examples:
 */
 
 function doubleOddNumbers(arr) {
-    return arr.filter(el => {
-        return el % 2 != 0;
-    }).map(num => {
-        return num * 2;
+  return arr
+    .filter((el) => {
+      return el % 2 != 0;
     })
+    .map((num) => {
+      return num * 2;
+    });
 }
 
 // console.log(doubleOddNumbers([1,2,3,4,5]));
 
 // MySome function
 function mySome(arr, callback) {
-    for(let i = 0; i < arr.length; i++) {
-        if(callback(arr[i], i, arr)) {
-            return true;
-        }
+  for (let i = 0; i < arr.length; i++) {
+    if (callback(arr[i], i, arr)) {
+      return true;
     }
-    return false;
+  }
+  return false;
 }
 
 // My every function
 function myEvery(arr, callback) {
-    for(let i = 0; i < arr.length; i++) {
-        if(!callback(arr[i], i, arr)) {
-            return false;
-        }
+  for (let i = 0; i < arr.length; i++) {
+    if (!callback(arr[i], i, arr)) {
+      return false;
     }
-    return true;
+  }
+  return true;
 }
 
 //  console.log(myEvery([2,4,5], (val) => val % 2 === 0));
@@ -350,9 +352,9 @@ Examples:
 */
 
 function hasOddNumber(arr) {
-    return arr.some(num => {
-        return num % 2 !=0;
-    })
+  return arr.some((num) => {
+    return num % 2 != 0;
+  });
 }
 
 //console.log(hasOddNumber([2,2,2,2,2,2,4]));
@@ -367,9 +369,12 @@ Examples:
 */
 
 function hasAZero(num) {
-    return num.toString().split("").some(val => {
-        return val === "0";
-    })
+  return num
+    .toString()
+    .split("")
+    .some((val) => {
+      return val === "0";
+    });
 }
 
 // console.log(hasAZero(3332123213101232321));
@@ -385,9 +390,9 @@ Examples:
 */
 
 function hasOnlyOddNumbers(arr) {
-    return arr.every(num => {
-        return num % 2 !== 0;
-    })
+  return arr.every((num) => {
+    return num % 2 !== 0;
+  });
 }
 
 // console.log(hasOnlyOddNumbers([1,2,3,5,7]));
@@ -404,9 +409,9 @@ Examples:
 */
 
 function hasNoDuplicates(arr) {
-    return arr.every(function(el, i, array){
-        return array.filter(val => val === el).length !== 2;
-    })
+  return arr.every(function (el, i, array) {
+    return array.filter((val) => val === el).length !== 2;
+  });
 }
 
 /*
@@ -425,20 +430,19 @@ Examples:
     hasCertainKey(arr,'isCatOwner') // false
 */
 function hasCertainKey(arr, key) {
-    return arr.every(obj => {
-        return obj[key] !== undefined;
-    })
+  return arr.every((obj) => {
+    return obj[key] !== undefined;
+  });
 }
 
 // var arr = [
-//     {title: "Instructor", first: 'Elie', last:"Schoppik"}, 
-//     {title: "Instructor", first: 'Tim', last:"Garcia", isCatOwner: true}, 
-//     {title: "Instructor", first: 'Matt', last:"Lane"}, 
+//     {title: "Instructor", first: 'Elie', last:"Schoppik"},
+//     {title: "Instructor", first: 'Tim', last:"Garcia", isCatOwner: true},
+//     {title: "Instructor", first: 'Matt', last:"Lane"},
 //     {title: "Instructor", first: 'Colt', last:"Steele", isCatOwner: true}
 // ]
 
 // console.log(hasCertainKey(arr,'isCatOwner'));
-
 
 /*
 Write a function called hasCertainValue which accepts an array of objects and a key, and a value,
@@ -458,15 +462,15 @@ Examples:
     
 */
 function hasCertainValue(arr, key, value) {
-    return arr.every(ob => {
-        return ob[key] === value;
-    })
+  return arr.every((ob) => {
+    return ob[key] === value;
+  });
 }
 
 // var arr = [
-//     {title: "Instructor", first: 'Elie', last:"Schoppik"}, 
-//     {title: "Instructor", first: 'Tim', last:"Garcia", isCatOwner: true}, 
-//     {title: "Instructor", first: 'Matt', last:"Lane"}, 
+//     {title: "Instructor", first: 'Elie', last:"Schoppik"},
+//     {title: "Instructor", first: 'Tim', last:"Garcia", isCatOwner: true},
+//     {title: "Instructor", first: 'Matt', last:"Lane"},
 //     {title: "Instructor", first: 'Colt', last:"Steele", isCatOwner: true}
 // ]
 
@@ -482,12 +486,12 @@ Examples:
     extractValue(arr,'name') // ['Elie', 'Tim', 'Matt', 'Colt']
 */
 function extractValue(arr, key) {
-    return arr.reduce((acc, currValue) => {
-        if(currValue[key]) {
-        acc.push(currValue[key]);
-        }
-        return acc;
-    }, [])
+  return arr.reduce((acc, currValue) => {
+    if (currValue[key]) {
+      acc.push(currValue[key]);
+    }
+    return acc;
+  }, []);
 }
 
 // var arr = [{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}, {foo: 'Bar'}]
@@ -507,18 +511,18 @@ Examples:
 */
 
 function vowelCount(str) {
-    const vowels = ["a","e","i","o","u"];
-    const letters = str.toLowerCase().split("");           
-    return letters.reduce((acc, next)=> {
-        if(vowels.indexOf(next) > -1){
-            if(acc[next] !== undefined) {
-                acc[next] += 1;
-            } else {
-                acc[next] = 1;
-            }
-        }
-        return acc;
-    },{})
+  const vowels = ["a", "e", "i", "o", "u"];
+  const letters = str.toLowerCase().split("");
+  return letters.reduce((acc, next) => {
+    if (vowels.indexOf(next) > -1) {
+      if (acc[next] !== undefined) {
+        acc[next] += 1;
+      } else {
+        acc[next] = 1;
+      }
+    }
+    return acc;
+  }, {});
 }
 
 // console.log(vowelCount('I Am awesome and so are you'));
@@ -540,22 +544,22 @@ Examples:
 */
 
 function addKeyAndValue(arr, key, value) {
-    // return arr.reduce((acc, next) => {
-    //     console.log(next);
-    //     let newKey = Object.keys(next)[0];
-    //     let newName = Object.values(next)[0]
-    //     debugger;
-    //     acc.push({key:value, [newKey]:newName })
-    //     return acc;
-    // }, [])
-    return arr.reduce((acc, next) => {
-        next[key] = value;
-        return acc;
-    }, arr)
+  // return arr.reduce((acc, next) => {
+  //     console.log(next);
+  //     let newKey = Object.keys(next)[0];
+  //     let newName = Object.values(next)[0]
+  //     debugger;
+  //     acc.push({key:value, [newKey]:newName })
+  //     return acc;
+  // }, [])
+  return arr.reduce((acc, next) => {
+    next[key] = value;
+    return acc;
+  }, arr);
 }
 
 // var arr = [{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}];
-    
+
 // console.log(addKeyAndValue(arr, 'title', 'Instructor'));
 
 /*
@@ -585,18 +589,21 @@ Examples:
 */
 
 function partition(arr, callback) {
-    return arr.reduce((acc, next)=> {
-        if(callback(next)) {
-            acc[0].push(next);
-        } else {
-            acc[1].push(next);
-        }
-        return acc;
-    },[[],[]])
+  return arr.reduce(
+    (acc, next) => {
+      if (callback(next)) {
+        acc[0].push(next);
+      } else {
+        acc[1].push(next);
+      }
+      return acc;
+    },
+    [[], []],
+  );
 }
 
-function isEven(val){
-    return val % 2 === 0;
+function isEven(val) {
+  return val % 2 === 0;
 }
 
 // var arr = [1,2,3,4,5,6,7,8];
@@ -619,12 +626,12 @@ Examples:
 */
 
 function specialMultiply(num1, num2) {
-    if(arguments.length > 1) {
-        return num1 * num2;
-    }   
-    return function(num) {
-        return num1 * num;
-    }
+  if (arguments.length > 1) {
+    return num1 * num2;
+  }
+  return function (num) {
+    return num1 * num;
+  };
 }
 
 // console.log(specialMultiply(3,4));
@@ -662,26 +669,25 @@ Examples (yours might not be like this, since the answer is random every time):
     game2(1) // "You are all done playing!"
 */
 function guessingGame(numOfGuesses) {
-    let guesses = 0;
-    let rndNum = Math.floor((Math.random() * 10) + 1);
-    return function game(guess) {
-        if (guesses === numOfGuesses) {
-            return "You're all done playing";
-        }
-        guesses++;        
-        if(guess < rndNum) {
-            return "You're too low";
-        } else if(guess > rndNum) {
-            return "You're too high";
-        } else {
-            guesses = numOfGuesses;
-            return "You got it. Well done!"
-        }        
+  let guesses = 0;
+  let rndNum = Math.floor(Math.random() * 10 + 1);
+  return function game(guess) {
+    if (guesses === numOfGuesses) {
+      return "You're all done playing";
     }
+    guesses++;
+    if (guess < rndNum) {
+      return "You're too low";
+    } else if (guess > rndNum) {
+      return "You're too high";
+    } else {
+      guesses = numOfGuesses;
+      return "You got it. Well done!";
+    }
+  };
 }
 
 // The keyword "this" and call, apply and bind
-
 
 // Given
 // var divs = document.getElementsByTagName('div');
@@ -691,7 +697,6 @@ function guessingGame(numOfGuesses) {
 // We will have to covert it into an array by using slice but with a differnece.
 
 // var divsArray = [].slice.call(divs);
-
 
 /*
 Write a function called arrayFrom which converts an array-like-object into an
@@ -705,7 +710,7 @@ Examples:
 */
 
 function arrayFrom(arrLikeObj) {
-    return [].slice.apply(arrLikeObj);
+  return [].slice.apply(arrLikeObj);
 }
 
 /* 
@@ -719,13 +724,13 @@ Examples:
 */
 // arguments is an arraylike object
 function sumEvenArguments() {
-    let newArr = [].slice.apply(arguments);       
-    return newArr.reduce((acc, next) => {
-        if(next % 2 === 0) {
-            return acc + next;
-        }
-        return acc;
-    },0)
+  let newArr = [].slice.apply(arguments);
+  return newArr.reduce((acc, next) => {
+    if (next % 2 === 0) {
+      return acc + next;
+    }
+    return acc;
+  }, 0);
 }
 
 // console.log(sumEvenArguments(1,2,3,4));
@@ -751,12 +756,12 @@ Examples:
 */
 
 function invokeMax(fn, counter) {
-    let max = 0;
-    return function() {
-        if(max >= counter) return "Maxed out!";
-        max++;
-        return fn.apply(this, arguments);
-    }
+  let max = 0;
+  return function () {
+    if (max >= counter) return "Maxed out!";
+    max++;
+    return fn.apply(this, arguments);
+  };
 }
 
 /* 
@@ -788,16 +793,15 @@ Examples:
 */
 
 function once(fn, key) {
-    let called = false;
-    return function(){
-        if(!called) { // check for called = true
-            called = true;
-            return fn.apply(key, arguments);
-        }
-    };
+  let called = false;
+  return function () {
+    if (!called) {
+      // check for called = true
+      called = true;
+      return fn.apply(key, arguments);
+    }
+  };
 }
-
-
 
 // ES2015
 
@@ -813,7 +817,7 @@ Examples:
 */
 
 function smallestValue() {
-    return Math.min(...arguments);
+  return Math.min(...arguments);
 }
 
 /* 
@@ -829,9 +833,9 @@ Examples:
 */
 
 function placeInMiddle(arr1, arr2) {
-    let middle = Math.floor(arr1.length / 2);
-    arr1.splice(middle, 0 , ...arr2);
-    return arr1;
+  let middle = Math.floor(arr1.length / 2);
+  arr1.splice(middle, 0, ...arr2);
+  return arr1;
 }
 
 // console.log(placeInMiddle([1,2,6,7],[3,4,5])) // [1,2,3,4,5,6,7])
@@ -851,11 +855,11 @@ Examples:
 */
 
 function joinArrays() {
-    let arrs = [...arguments];
-    return arrs.reduce((acc, next) => {
-        acc.push(...next);
-        return acc;
-    }, [])
+  let arrs = [...arguments];
+  return arrs.reduce((acc, next) => {
+    acc.push(...next);
+    return acc;
+  }, []);
 }
 
 // console.log(joinArrays([1],[3],[0],[7]));
@@ -871,7 +875,9 @@ Examples:
 */
 
 function sumEvenArgs() {
-    return [...arguments].filter(val => val % 2 === 0).reduce((acc, next) => acc + next);
+  return [...arguments]
+    .filter((val) => val % 2 === 0)
+    .reduce((acc, next) => acc + next);
 }
 
 // console.log(sumEvenArgs(1,2,3,4));
@@ -912,13 +918,13 @@ Examples:
 */
 
 function flip(fn, thisVal, ...outerArgs) {
-    return function(...innerArgs) {
-        let allArgs  = outerArgs.concat(innerArgs).slice(0, fn.length);
-        return fn.apply(thisVal, allArgs.reverse());
-    }
+  return function (...innerArgs) {
+    let allArgs = outerArgs.concat(innerArgs).slice(0, fn.length);
+    return fn.apply(thisVal, allArgs.reverse());
+  };
 }
-function personSubtract(a,b,c){
-    return this.firstName + " subtracts " + (a-b-c);
+function personSubtract(a, b, c) {
+  return this.firstName + " subtracts " + (a - b - c);
 }
 
 // var person = {
@@ -967,13 +973,13 @@ Examples:
 
 */
 function bind(fn, thisArg, ...outerArgs) {
-    return function(...innerArgs){
-        return fn.apply(thisArg, [...outerArgs, ...innerArgs]);
-    }    
+  return function (...innerArgs) {
+    return fn.apply(thisArg, [...outerArgs, ...innerArgs]);
+  };
 }
 
-function firstNameFavoriteColor(favoriteColor){
-    return this.firstName + "'s favorite color is " + favoriteColor
+function firstNameFavoriteColor(favoriteColor) {
+  return this.firstName + "'s favorite color is " + favoriteColor;
 }
 
 // var person = {
@@ -985,9 +991,93 @@ function firstNameFavoriteColor(favoriteColor){
 // var bindFn2 = bind(firstNameFavoriteColor, person, 'blue');
 // console.log(bindFn2('green'));
 
-
 /////////////////////////////////////////////////////////////////////////////////
-//Destructoring 
+//New Keyword
+/////////////////////////////////////////////////////////////////////////////////
+
+function Dog(name, age) {
+  this.name = name;
+  this.age = age;
+  this.bark = () => console.log(`${name} just barked`);
+}
+// var rusty = new Dog("Rusty", 3);
+// var fido = new Dog("Fido", 1);
+// rusty.bark();
+// fido.bark();
+
+//make a motorcycle  costructor functon that inherits from the Car constructor
+
+function Car2(make, model, year) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
+  this.numWheels = 4;
+}
+
+function Motorcycle2() {
+  Car2.apply(this, arguments);
+  this.numWheels = 2;
+}
+// var myBike = new Motorcycle2("Yamaha", "ZBR", 2007);
+// console.log(myBike.numWheels);
+
+// Given the following code - refactor the Child function to remove all the duplication from the Parent function.
+//  You should be able to remove 4 lines of code in the Child function and replace it with 1 single line.
+
+function Parent(firstName, lastName, favoriteColor, favoriteFood) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.favoriteColor = favoriteColor;
+  this.favoriteFood = favoriteFood;
+}
+
+function Child() {
+  Parent.apply(this, arguments);
+}
+
+// 1 - Create a constructor function for a Person. Each person should have a firstName, lastName, favoriteColor,
+//  favoriteNumber)
+// 2 - Add a function on the Person.prototype called fullName that returns the firstName and lastName property
+//of an object created by the Person
+// constructor concatenated together.
+// 3 -  Add a property on the object created from the Person function called family which is an empty array.
+//  This will involve you going back and adding an additional line of code to your Person constructor you
+//  previously created in exercise 1.
+//  4 - Add a function on the Person.prototype called addToFamily which adds an object constructed from the
+//  Person constructor to the family array. To make sure that the object you are adding is an object construced
+//  from the Person constructor (HINT - take a look at the instanceof keyword). Make sure that your family array
+//  does not include duplicates! This method should return the length of the family array.
+function Person(firstName, lastName, favoriteColor, favoriteNumber) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.favoriteColor = favoriteColor;
+  this.favoriteNumber = favoriteNumber;
+  this.family = [];
+}
+Person.prototype.fullName = function () {
+  return this.firstName + " " + this.lastName;
+};
+Person.prototype.addToFamily = function (member) {
+  let personCheck = this.family.filter((p) => p === member);
+  if (member instanceof Person && personCheck.length === 0) {
+    this.family.push(member);
+  }
+  return this.family.length;
+};
+
+var elie = new Person("Elie", "Schoppik", "purple", 34);
+var frank = new Person("Frank", "Schoppik", "blue", 12);
+elie.addToFamily(frank);
+console.log(elie.family.length);
+console.log("Add same family member again");
+elie.addToFamily(frank);
+console.log(elie.family.length);
+console.log("Add new family member");
+var anne = new Person("Anne", "Schoppik", "pink", 10);
+elie.addToFamily(anne);
+console.log(elie.family.length);
+/////////////////////////////////////////////////////////////////////////////////
+//Destructoring
 /////////////////////////////////////////////////////////////////////////////////
 
 /* 
@@ -1002,8 +1092,8 @@ Examples:
 */
 
 function displayStudentInfo(obj) {
-    let {first, last} = obj;
-    return `Your full name is ${first} ${last}` 
+  let { first, last } = obj;
+  return `Your full name is ${first} ${last}`;
 }
 
 /* 
@@ -1018,8 +1108,8 @@ Examples:
     Schoppik'
 */
 
-function printFullName({first = 'John', last = 'Wick'} = {}) {
-    return `Your full name is ${first} ${last}`
+function printFullName({ first = "John", last = "Wick" } = {}) {
+  return `Your full name is ${first} ${last}`;
 }
 
 // console.log(printFullName({first: 'Elie', last:'Schoppik'}));
@@ -1048,11 +1138,13 @@ Examples:
 */
 
 // you will have to pass in the correct parameters for this function!
-function createStudent({likesES2015 = true, likesJavaScript = true} = {}){
-    if(likesES2015 && likesJavaScript) return'The student likes JavaScript and ES2015!';
-	 else if(!likesES2015 && likesJavaScript) return 'The student likes JavaScript!';
-	 else if(likesES2015 && !likesJavaScript) return'The student likes ES2015!';
-		else return 'The student does not like much...';
+function createStudent({ likesES2015 = true, likesJavaScript = true } = {}) {
+  if (likesES2015 && likesJavaScript)
+    return "The student likes JavaScript and ES2015!";
+  else if (!likesES2015 && likesJavaScript)
+    return "The student likes JavaScript!";
+  else if (likesES2015 && !likesJavaScript) return "The student likes ES2015!";
+  else return "The student does not like much...";
 }
 
 /* 
@@ -1068,12 +1160,12 @@ Examples:
 */
 
 function reverseArray() {
-   //return arr.reverse();
-    // using destructoring
-	for(var i = 0; i < arr.length/2; i++) {
-		[arr[i], arr[arr.length -1 -i]] = [arr[arr.length -1 -i], arr[i]];
-	}
-	return arr;
+  //return arr.reverse();
+  // using destructoring
+  for (var i = 0; i < arr.length / 2; i++) {
+    [arr[i], arr[arr.length - 1 - i]] = [arr[arr.length - 1 - i], arr[i]];
+  }
+  return arr;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1122,19 +1214,19 @@ Examples:
 */
 
 class Vehicle {
-    constructor(make, model, year) {
-        this.make = make;
-        this.model = model;
-        this.year = year;
-    }
+  constructor(make, model, year) {
+    this.make = make;
+    this.model = model;
+    this.year = year;
+  }
 
-    start() {
-        return "VROOM!";
-    }
+  start() {
+    return "VROOM!";
+  }
 
-    toString() {
-        return `The make, model, and year are ${this.make}, ${this.model} and ${this.year}`
-    }
+  toString() {
+    return `The make, model, and year are ${this.make}, ${this.model} and ${this.year}`;
+  }
 }
 
 // var vehicle = new Vehicle("Tractor", "John Deere", 1999)
@@ -1146,11 +1238,11 @@ class Vehicle {
 // the Vehicle prototype
 
 class Car extends Vehicle {
-    constructor() {
-        // super(make, model, year);
-        super(...arguments);
-        this.numWheels = 4;
-    }
+  constructor() {
+    // super(make, model, year);
+    super(...arguments);
+    this.numWheels = 4;
+  }
 }
 
 // 5 - Create a class for a Motorcycle. Each object created from the Motorcycle
@@ -1159,14 +1251,11 @@ class Car extends Vehicle {
 // methods from the Vehicle prototype
 
 class Motorcycle extends Vehicle {
-    constructor() {
-        super(...arguments);
-        this.numWheesl = 2;
-    }
+  constructor() {
+    super(...arguments);
+    this.numWheesl = 2;
+  }
 }
-
-
-
 
 /*
    In your constructor method, you should assign two properties for each object
@@ -1230,7 +1319,7 @@ class Motorcycle extends Vehicle {
     m.findMessageByValue() // undefined
     */
 
- /*
+/*
     Add a method called removeMessage which accepts a number and removes a
     message in the messages map with a key of the number passed to the function.
     
@@ -1265,45 +1354,45 @@ class Motorcycle extends Vehicle {
     m.messagesToArray() // ['hello!', 'hi!', 'whats up?'])
     */
 
-    class MessageBoard {
-        constructor() {
-            this.message = new Map();
-            this.id = 1;
-        }
-        addMessage(newMessage) {
-            this.message.set(this.id, newMessage);
-            this.id++;
-            return this;
-        }
-        findMessageById(id) {
-            return this.message.get(id);
-        }
-        fintMessageByValue(val) {
-            const iterator1 = this.message[Symbol.iterator]();
-            for (let item of iterator1) {
-                if (val === item[1]) {
-                    return item[1];
-                }
-            }
-            return undefined;
-        }
-        removeMessage(num) {
-            return this.message.delete(num);
-        }
-        numberOfMessages() {
-            return this.message.size;
-        }
-        messagesToArray() {
-            // return Array.from(this.message.values());
-            const iterator2 = this.message.values();
-            let arr = []
-            for(let item of iterator2) {
-                arr.push(item);
-            }
-            return arr;
-        }
+class MessageBoard {
+  constructor() {
+    this.message = new Map();
+    this.id = 1;
+  }
+  addMessage(newMessage) {
+    this.message.set(this.id, newMessage);
+    this.id++;
+    return this;
+  }
+  findMessageById(id) {
+    return this.message.get(id);
+  }
+  fintMessageByValue(val) {
+    const iterator1 = this.message[Symbol.iterator]();
+    for (let item of iterator1) {
+      if (val === item[1]) {
+        return item[1];
+      }
     }
-    
+    return undefined;
+  }
+  removeMessage(num) {
+    return this.message.delete(num);
+  }
+  numberOfMessages() {
+    return this.message.size;
+  }
+  messagesToArray() {
+    // return Array.from(this.message.values());
+    const iterator2 = this.message.values();
+    let arr = [];
+    for (let item of iterator2) {
+      arr.push(item);
+    }
+    return arr;
+  }
+}
+
 // const m = new MessageBoard;
 // m.addMessage('hello!');
 // m.addMessage('hi!');
@@ -1320,8 +1409,8 @@ uniqueValues([1,1,2,2,2,3,3,3,3,4,4,4,5,5,6]) // 6
 */
 
 function uniqueValues(arr) {
-    let values = new Set(arr);
-    return values.size;
+  let values = new Set(arr);
+  return values.size;
 }
 
 // console.log(uniqueValues([1,1,2,2,2,3,3,3,3,4,4,4,5,5,6]));
@@ -1337,12 +1426,12 @@ hasDuplicates([]) // false
 */
 
 function hasDuplicates(arr) {
-    // return new Set(arr).size !== arr.length
-    let uniqueLength = new Set(arr).size;
-    if (uniqueLength === arr.length) {
-        return false;        
-    }
-    return true;
+  // return new Set(arr).size !== arr.length
+  let uniqueLength = new Set(arr).size;
+  if (uniqueLength === arr.length) {
+    return false;
+  }
+  return true;
 }
 
 // console.log(hasDuplicates([1,1,2,2,2,3,3,3,3,4,4,4,5,5,6]));
@@ -1364,17 +1453,16 @@ countPairs([0,-4],-4) // 1
 */
 
 function countPairs(arr, num) {
-    // use a set to see if the other pair exists    
-    const dupSet = new Set(arr);
-    let count = 0;
-    for(let val of arr) {
-        dupSet.delete(val);
-        if(dupSet.has(num - val)) {
-            count++;
-        }
+  // use a set to see if the other pair exists
+  const dupSet = new Set(arr);
+  let count = 0;
+  for (let val of arr) {
+    dupSet.delete(val);
+    if (dupSet.has(num - val)) {
+      count++;
     }
-    return count;
-
+  }
+  return count;
 }
 
 // countPairs([8,2,6,4,10,0],10);
@@ -1388,21 +1476,25 @@ most followers.
 */
 
 function getMostFollowers(...names) {
-    let baseUrl = "https://api.github.com/users/";
-    let promises = names.map(name => fetch(baseUrl + name).then(res => res.json()))    
-    Promise.all(promises).then(data => {        
-        let mostFollowers = {name: "Jonh Doe", followers: 0};        
-        data.forEach(val => {
-            console.log(val.name, val.followers);                       
-            if(val.followers > mostFollowers.followers) {
-                mostFollowers.name = val.name;
-                mostFollowers.followers = val.followers;
-            }
-        })        
-        console.log(`The person with the most followers is ${mostFollowers.name} with ${mostFollowers.followers} followers`)
+  let baseUrl = "https://api.github.com/users/";
+  let promises = names.map((name) =>
+    fetch(baseUrl + name).then((res) => res.json()),
+  );
+  Promise.all(promises)
+    .then((data) => {
+      let mostFollowers = { name: "Jonh Doe", followers: 0 };
+      data.forEach((val) => {
+        console.log(val.name, val.followers);
+        if (val.followers > mostFollowers.followers) {
+          mostFollowers.name = val.name;
+          mostFollowers.followers = val.followers;
+        }
+      });
+      console.log(
+        `The person with the most followers is ${mostFollowers.name} with ${mostFollowers.followers} followers`,
+      );
     })
-    .catch(error => console.error('Error fetching data:', error)); 
-
+    .catch((error) => console.error("Error fetching data:", error));
 }
 
 // getMostFollowers('elie','tigarcia','colt');
@@ -1415,28 +1507,28 @@ return a promise that when resolved will console.log the name, poplulation,
 currency and region of the country.
 */
 function getCountryData(name) {
-    let str = "";
-    return new Promise((res, rej) => {
-        let data = fetch(`https://restcountries.com/v3.1/name/${name}?fullText=true`)
-                    .then(info => info.json());
-        if(data) {
-            res(data);
-        } else {
-            rej("Error fetching data");
-        }
-    })
-    .then(res => {
-        str += `${res[0].name.common} has a population of ${res[0].population}
+  let str = "";
+  return new Promise((res, rej) => {
+    let data = fetch(
+      `https://restcountries.com/v3.1/name/${name}?fullText=true`,
+    ).then((info) => info.json());
+    if (data) {
+      res(data);
+    } else {
+      rej("Error fetching data");
+    }
+  })
+    .then((res) => {
+      str += `${res[0].name.common} has a population of ${res[0].population}
         and is in the continent of ${res[0].continents[0]}`;
-        return str
+      return str;
     })
-    .then(finalString => finalString);
+    .then((finalString) => finalString);
 }
 
 // getCountryData("Ireland")
 // .then(data => console.log(data))
 // .catch(error => console.log(error));
-
 
 ///////////////////////////////////////////////////////////////////////////////
 // Async Functions
@@ -1446,7 +1538,7 @@ function getCountryData(name) {
 // arguments. You should then make an AJAX call to the Github User API
 // (https://developer.github.com/v3/users/#get-a-single-user) to get the name
 // and number of followers of each argument. The function should return a string
-// which displays the username who has the most followers. 
+// which displays the username who has the most followers.
 
 // Hint - Try to use Promise.all to solve this and remember that the jQuery AJAX
 // methods ($.getJSON, $.ajax, etc.) return a promise.
@@ -1454,67 +1546,66 @@ function getCountryData(name) {
 // hasMostFollowers('elie','tigarcia','colt').then(function(data){
 //     console.log(data)
 // });
- 
-// "Colt has the most followers with 424" 
 
- async function hasMostFollowers(...args) {
-    // Create an array of promises using map
-    const promiseInfo = args.map(name => {
-        const url = `https://api.github.com/users/${name}`; 
-        return fetch(url)
-            .then(res => {
-                if(!res.ok) {
-                throw new Error(`HTTP error! Status: ${res.status}`);
-                }
-                return res.json();
-            })
-            .catch(error => console.error('Fetching error:', error.message));
-    })
-    try {
-        // Wait for all promises to resolve
-        const users = await Promise.all(promiseInfo);
-        let followers = 0;
-        let mostFollowers = "";
-        // Log each user information
-        users.forEach(user => {
-            if (user) {
-                if(user.following > followers) {
-                    followers = user.followers;
-                    mostFollowers = user.name;
-                }
-                // console.log(user.name);
-            }
-        });
-        console.log(`${mostFollowers} has the most followers at ${followers}`);
-    } catch (error) {
-        console.error('Error in Promise.all:', error);
-    }
-    // const nameList = await Promise.all(promiseInfo);
-    // nameList.forEach(val => console.log(val.name))
+// "Colt has the most followers with 424"
+
+async function hasMostFollowers(...args) {
+  // Create an array of promises using map
+  const promiseInfo = args.map((name) => {
+    const url = `https://api.github.com/users/${name}`;
+    return fetch(url)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        return res.json();
+      })
+      .catch((error) => console.error("Fetching error:", error.message));
+  });
+  try {
+    // Wait for all promises to resolve
+    const users = await Promise.all(promiseInfo);
+    let followers = 0;
+    let mostFollowers = "";
+    // Log each user information
+    users.forEach((user) => {
+      if (user) {
+        if (user.following > followers) {
+          followers = user.followers;
+          mostFollowers = user.name;
+        }
+        // console.log(user.name);
+      }
+    });
+    console.log(`${mostFollowers} has the most followers at ${followers}`);
+  } catch (error) {
+    console.error("Error in Promise.all:", error);
+  }
+  // const nameList = await Promise.all(promiseInfo);
+  // nameList.forEach(val => console.log(val.name))
 }
 
 // hasMostFollowers('balcoder', 'colt', 'elie');
 
 async function starWarsString(num) {
-    const baseUrl = "https://swapi.dev/api/films/";
-    const movieInfo = fetch(baseUrl + num)
-                        .then(res => {
-                            if(!res.ok) {
-                                throw new Error(`HTTP error! Status: ${res.status}`);
-                            }
-                            return res.json();
-                        })
-                        .catch(error => console.error('Fetching error:', error.message));
-    try {
-        let startTime = performance.now();
-        const movie = await movieInfo;        
-        let endTime = performance.now();
-        console.log(movie.title);        
-        console.log(`Get movie data took ${endTime - startTime} milliseconds`)
-        
-    } catch (error) {
-        console.error('Error in fetch:', error); 
-    }
+  const baseUrl = "https://swapi.dev/api/films/";
+  const movieInfo = fetch(baseUrl + num)
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+      return res.json();
+    })
+    .catch((error) => console.error("Fetching error:", error.message));
+  try {
+    let startTime = performance.now();
+    const movie = await movieInfo;
+    let endTime = performance.now();
+    console.log(movie.title);
+    console.log(`Get movie data took ${endTime - startTime} milliseconds`);
+  } catch (error) {
+    console.error("Error in fetch:", error);
+  }
 }
 
 starWarsString(2);
